@@ -7,6 +7,7 @@ import os
 import sys
 import pdf_converter
 
+
 # Function for opening the
 # file explorer window
 def browseFiles():
@@ -20,7 +21,7 @@ def browseFiles():
     print(filename[2:])
     pdf_converter.makeCleanPDF(filename[2:])
     # Change label contents
-    label_file_explorer.configure(text="DONE")
+    label_file_explorer.configure(text=f"Clean file is saved in {filename}. \nIf you want to clean next file just hit \"Browse Files\"")
       
       
                                                                                                   
@@ -28,10 +29,10 @@ def browseFiles():
 window = Tk()
   
 # Set window title
-window.title('Make the PDF clean.')
+window.title('Make the PDF clean again.')
   
 # Set window size
-window.geometry("500x500")
+window.geometry("720x480")
   
 #Set window background color
 window.config(background = "white")
@@ -39,7 +40,7 @@ window.config(background = "white")
 # Create a File Explorer label
 label_file_explorer = Label(window,
                             text = "Make our PDF clean like never before. :)",
-                            width = 75, height = 4,
+                            width = 102, height = 4,
                             fg = "blue")
   
       
