@@ -2,6 +2,10 @@
 from tkinter import *
 from tkinter import filedialog
 from pdf2image import convert_from_path
+import img2pdf
+import os
+import sys
+import pdf_converter
 
 # Function for opening the
 # file explorer window
@@ -13,7 +17,8 @@ def browseFiles():
                                                        ("all files",
                                                         "*.*")))
       
-    print(filename)
+    print(filename[2:])
+    pdf_converter.makeCleanPDF(filename[2:])
     # Change label contents
     label_file_explorer.configure(text="DONE")
       
