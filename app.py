@@ -19,6 +19,8 @@ def browseFiles():
                                                         "*.*")))
       
     print(filename[2:])
+
+    # Create PDF !!
     pdf_converter.makeCleanPDF(filename[2:])
     # Change label contents
     label_file_explorer.configure(text=f"Clean file is saved in {filename}. \nIf you want to clean next file just hit \"Browse Files\"")
