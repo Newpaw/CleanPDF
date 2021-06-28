@@ -11,8 +11,7 @@ import pdf_converter
 # Function for opening the
 # file explorer window
 def browseFiles():
-    filename = filedialog.askopenfilename(initialdir = "/Users/Honza/Nextcloud/MAS KPZ",
-                                          title = "Select a File",
+    filename = filedialog.askopenfilename(title = "Select a File",
                                           filetypes = (("PDF files",
                                                         "*.pdf*"),
                                                        ("all files",

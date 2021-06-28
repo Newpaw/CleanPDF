@@ -4,7 +4,14 @@ from pdf2image import convert_from_path
 import img2pdf
 import os
 import sys
+import logging
  
+# loggin configuration
+
+logging.basicConfig(handlers=[logging.FileHandler(filename="app.log",encoding='utf-8', mode='a+')],
+                    format="%(asctime)s %(name)s:%(levelname)s: %(message)s", 
+                    datefmt="%F %A %T", 
+                    level=logging.INFO)
 
 # Store PDF with convert_from_path function
 
@@ -17,7 +24,8 @@ def makeCleanPDF(pathToPDF):
         # Save pages as images in the pdf
         page_name = 'page'+ str(i) +'.jpg'
         images[i].save(page_name, 'JPEG')
-        print(f"Image {page_name} created.")
+
+        logging.info(f"Image {page_name} created.")
 
     # images to PDF
     dirname = "."
@@ -31,7 +39,8 @@ def makeCleanPDF(pathToPDF):
         imgs.append(path)
     with open(f"{pathToPDF[:-3]}_v2.pdf","wb") as f:
         f.write(img2pdf.convert(imgs))
-        print(f"{pathToPDF[:-3]}_v2.pdf.")
+
+        logging.info(f"Path to new file: {pathToPDF[:-3]}_v2.pdf.")
 
 
     # delete images
@@ -41,7 +50,8 @@ def makeCleanPDF(pathToPDF):
     for file in filtered_files:
         path_to_file = os.path.join(dirname, file)
         os.remove(path_to_file)
-        print(f"Image {file} deleted!")
+        
+        logging.info(f"Image {file} deleted!")
 
 
 #pdf_name = input("Insert path: ")
