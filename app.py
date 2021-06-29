@@ -2,9 +2,6 @@
 from tkinter import *
 from tkinter import filedialog
 from pdf2image import convert_from_path
-import img2pdf
-import os
-import sys
 import pdf_converter
 
 
@@ -17,12 +14,14 @@ def browseFiles():
                                                        ("all files",
                                                         "*.*")))
       
-    print(filename[2:])
-
+    
     # Create PDF !!
     pdf_converter.makeCleanPDF(filename[2:])
     # Change label contents
+    
     label_file_explorer.configure(text=f"Clean file is saved in {filename}. \nIf you want to clean next file just hit \"Browse Files\"")
+    filename_split = filename.split("/")
+    print(f"Done! File name: {filename_split[-1]}")
       
       
                                                                                                   

@@ -3,7 +3,6 @@
 from pdf2image import convert_from_path
 import img2pdf
 import os
-import sys
 import logging
  
 # loggin configuration
@@ -53,6 +52,3 @@ def makeCleanPDF(pathToPDF):
         
         logging.info(f"Image {file} deleted!")
 
-
-#pdf_name = input("Insert path: ")
-#makeCleanPDF(pdf_name)
