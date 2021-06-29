@@ -2,3 +2,4 @@
 __vscode__
 __pycache__
 *.log
+*.spec

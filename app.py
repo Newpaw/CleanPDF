@@ -14,13 +14,12 @@ def browseFiles():
       
     
     # Create PDF !!
-    try:
+    if filename:
         pdf_converter.makeCleanPDF(filename[2:])
         label_file_explorer.configure(text=f"Clean file is saved in {filename}. \nIf you want to clean next file just hit \"Browse Files\"")
-    except:
+    else:
         pdf_converter.logging.error("Not given path")
         # Change label contents
-        label_file_explorer.configure(text="Not given path")
                                                                                                  
 # Create the root window
 window = Tk()
@@ -29,7 +28,7 @@ window = Tk()
 window.title('Make the PDF clean again.')
   
 # Set window size
-window.geometry("720x480")
+window.geometry("720x120")
   
 #Set window background color
 window.config(background = "white")

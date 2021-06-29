@@ -55,4 +55,3 @@ def makeCleanPDF(pathToPDF):
         os.remove(path_to_file)
         
         logging.info(f"Image {file} deleted!")
-
