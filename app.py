@@ -1,9 +1,7 @@
 
 from tkinter import *
 from tkinter import filedialog
-from pdf2image import convert_from_path
 import pdf_converter
-
 
 # Function for opening the
 # file explorer window
@@ -16,15 +14,14 @@ def browseFiles():
       
     
     # Create PDF !!
-    pdf_converter.makeCleanPDF(filename[2:])
-    # Change label contents
-    
-    label_file_explorer.configure(text=f"Clean file is saved in {filename}. \nIf you want to clean next file just hit \"Browse Files\"")
-    filename_split = filename.split("/")
-    print(f"Done! File name: {filename_split[-1]}")
-      
-      
-                                                                                                  
+    try:
+        pdf_converter.makeCleanPDF(filename[2:])
+        label_file_explorer.configure(text=f"Clean file is saved in {filename}. \nIf you want to clean next file just hit \"Browse Files\"")
+    except:
+        pdf_converter.logging.error("Not given path")
+        # Change label contents
+        label_file_explorer.configure(text="Not given path")
+                                                                                                 
 # Create the root window
 window = Tk()
   

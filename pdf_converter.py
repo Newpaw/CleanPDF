@@ -1,5 +1,3 @@
-#!/mnt/c/Users/Honza/Projects/PDFconvertor/env/bin/python
-
 from pdf2image import convert_from_path
 import img2pdf
 import os
@@ -13,8 +11,6 @@ logging.basicConfig(handlers=[logging.FileHandler(filename="app.log",encoding='u
                     level=logging.INFO)
 
 # Store PDF with convert_from_path function
-
-
 def makeCleanPDF(pathToPDF):
     images = convert_from_path(pathToPDF)
     
@@ -39,7 +35,15 @@ def makeCleanPDF(pathToPDF):
     with open(f"{pathToPDF[:-3]}_v2.pdf","wb") as f:
         f.write(img2pdf.convert(imgs))
 
-        logging.info(f"Path to new file: {pathToPDF[:-3]}_v2.pdf.")
+    try:
+        name = pathToPDF.split("/")[-1]
+        happytext = f"For file name: {name} has been created clean copy {name[:-4]}_v2.pdf"
+        
+        logging.info(happytext)
+        logging.info(f"Path to new file: {pathToPDF[:-4]}_v2.pdf.")
+        print(happytext)
+    except:
+        logging.error("An exception occurred")
 
 
     # delete images
